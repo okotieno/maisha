@@ -1,0 +1,22 @@
+<section id="team" class="team">
+    <div class="container" data-aos="fade-up">
+  
+      <div class="section-title">
+        <h2>Meet the Team</h2>
+      </div>
+    <div class="row">
+    <div class="column" *ngFor="let member of teamMembers">
+      <div class="card">
+        <img [src]="member.imageUrl" alt="{{ member.name }}">
+        <div class="container">
+          <h2>{{ member.name }}</h2>
+          <p class="title">{{ member.title }}</p>
+          <p>{{ member.description }}</p>
+          <p>{{ member.email }}</p>
+          <p><button class="button">Contact</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section>

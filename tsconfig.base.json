@@ -15,8 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@furaha/contact": ["libs/web/components/contacts/src/index.ts"],
+      "@furaha/contacts": ["libs/web/component/contacts/src/index.ts"],
+      "@furaha/projects": ["libs/web/components/projects/src/index.ts"],
       "@furaha/shared/icon": ["libs/shared/icon/src/index.ts"],
       "@furaha/shared/theme": ["libs/shared/theme/src/index.ts"],
+      "@furaha/team": ["libs/web/components/team/src/index.ts"],
       "@furaha/web/components/about-us": [
         "libs/web/components/about/src/index.ts"
       ],

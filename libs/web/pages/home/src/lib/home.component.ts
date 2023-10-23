@@ -3,6 +3,9 @@ import { HeaderComponent } from '../../../../components/header/src/lib/header.co
 import { WebComponentsHeroComponent } from '@furaha/web/components/hero';
 import { WebComponentsAboutComponent } from '@furaha/web/components/about-us';
 import { WebComponentsClientsComponent } from '@furaha/web/components/clients';
+import { ProjectsComponent } from '@furaha/projects';
+import { ContactComponent } from '@furaha/contact';
+import { TeamComponent } from '@furaha/team';
 
 @Component({
   standalone: true,
@@ -11,7 +14,10 @@ import { WebComponentsClientsComponent } from '@furaha/web/components/clients';
     HeaderComponent,
     WebComponentsHeroComponent,
     WebComponentsAboutComponent,
-    WebComponentsClientsComponent
+    WebComponentsClientsComponent,
+    ProjectsComponent,
+    ContactComponent,
+    TeamComponent
   ],
   styleUrls: ['home.component.scss']
 })
