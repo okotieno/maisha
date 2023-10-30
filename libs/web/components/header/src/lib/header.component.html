@@ -2,17 +2,21 @@
   <div class="container d-flex align-items-center">
     <a href="index.html" class="logo me-auto"><img src="assets/logo.png" alt="" class="img-fluid"></a>
 
-    <nav #navbar id="navbar" class="navbar">
+    <nav #navbar id="navbar" class="navbar" [class.navbar-mobile]="navbarOpen()">
       <ul>
         <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto active" href="#hero">Home</a></li>
         <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#about">About</a></li>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#health-library">Health Library</a></li>
+        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#health-library">Health Library</a>
+        </li>
         <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#team">Team</a></li>
         <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#contact">Contact</a></li>
         <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#project">Projects</a></li>
         <li><a mat-stroked-button class="getstarted scrollto" href="#about">Get Started</a></li>
       </ul>
-      <mat-icon class="bi bi-list mobile-nav-toggle" svgIcon="menu"></mat-icon>
+
+      <button (click)="toggleNavBar()" class="bi bi-list mobile-nav-toggle" mat-icon-button>
+        <mat-icon [svgIcon]="navbarOpen() ? 'close' : 'menu'"></mat-icon>
+      </button>
     </nav><!-- .navbar -->
 
   </div>

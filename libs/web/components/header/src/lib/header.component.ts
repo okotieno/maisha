@@ -5,7 +5,7 @@ import {
   HostBinding,
   HostListener,
   QueryList,
-  Renderer2,
+  Renderer2, signal,
   ViewChild
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,9 +25,10 @@ import { MatButtonModule } from '@angular/material/button';
 
 export class HeaderComponent implements AfterViewInit {
   @ViewChild('navbar') navbar?: ElementRef<any>
+  navbarOpen = signal(false);
 
   constructor(private renderer: Renderer2, iconService: IconService) {
-    iconService.registerIcons(['menu'])
+    iconService.registerIcons(['menu', 'close'])
   }
 
   ngAfterViewInit(): void {
@@ -83,5 +84,12 @@ export class HeaderComponent implements AfterViewInit {
       top: elementPos - offset,
       behavior: 'smooth'
     })
+  }
+
+  toggleNavBar() {
+    this.navbarOpen.set(!this.navbarOpen());
+    // document.querySelector('#navbar')?.classList.toggle('navbar-mobile')
+    // this.classList.toggle('bi-list')
+    // this.classList.toggle('bi-x')
   }
 }
