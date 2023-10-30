@@ -31,7 +31,16 @@
         "libs/web/components/header/src/index.ts"
       ],
       "@furaha/web/components/hero": ["libs/web/components/hero/src/index.ts"],
-      "@furaha/web/pages/home": ["libs/web/pages/home/src/index.ts"]
+      "@furaha/web/pages/home": ["libs/web/pages/home/src/index.ts"],
+      "@maisha/web/components/footer": [
+        "libs/web/components/footer/src/index.ts"
+      ],
+      "@maisha/web/components/health-library": [
+        "libs/web/components/health-library/src/index.ts"
+      ],
+      "@maisha/web/components/join-newsletter": [
+        "libs/web/components/join-newsletter/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

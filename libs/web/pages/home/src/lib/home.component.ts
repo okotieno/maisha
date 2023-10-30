@@ -6,6 +6,8 @@ import { WebComponentsClientsComponent } from '@furaha/web/components/clients';
 import { ProjectsComponent } from '@furaha/projects';
 import { ContactComponent } from '@furaha/contact';
 import { TeamComponent } from '@furaha/team';
+import { HealthLibraryComponent } from '@maisha/web/components/health-library';
+import { FooterComponent } from '@maisha/web/components/footer';
 
 @Component({
   standalone: true,
@@ -17,7 +19,9 @@ import { TeamComponent } from '@furaha/team';
     WebComponentsClientsComponent,
     ProjectsComponent,
     ContactComponent,
-    TeamComponent
+    TeamComponent,
+    HealthLibraryComponent,
+    FooterComponent
   ],
   styleUrls: ['home.component.scss']
 })
