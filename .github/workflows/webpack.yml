@@ -29,8 +29,9 @@ jobs:
       run: |
         npm install -g pnpm
         pnpm install
-        NX_BASE_HREF="https://okotieno.github.io/maisha" && pnpm build -- --baseHref "https://okotieno.github.io/maisha/"
-
+        pnpm build -- --baseHref "https://okotieno.github.io/maisha/"
+      env:
+        NX_BASE_HREF: "https://okotieno.github.io/maisha"
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
