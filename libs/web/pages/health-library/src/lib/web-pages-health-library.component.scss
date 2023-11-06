@@ -1,0 +1,12 @@
+@import "variables";
+.header-section {
+  background: $success-dark;
+  height: 100px;
+  display: block;
+}
+.fixed-side-menu {
+  position: fixed;
+  width: inherit;
+  top: 100px;
+  padding-right: 4.5rem;
+}

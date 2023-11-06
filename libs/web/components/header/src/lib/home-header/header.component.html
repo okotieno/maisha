@@ -4,13 +4,9 @@
 
     <nav #navbar id="navbar" class="navbar" [class.navbar-mobile]="navbarOpen()">
       <ul>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto active" href="#hero">Home</a></li>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#about">About</a></li>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#health-library">Health Library</a>
-        </li>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#team">Team</a></li>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#contact">Contact</a></li>
-        <li><a (click)="handleScrollToClick($event)" class="nav-link scrollto" href="#project">Projects</a></li>
+        <li *ngFor="let link of links()">
+          <a [routerLink]="['']" [fragment]="link.slug" [routerLinkActive]="'active'"
+             [routerLinkActiveOptions]="routerLinkActiveOptions" class="nav-link scrollto">{{ link.label }}</a></li>
         <li><a mat-stroked-button class="getstarted scrollto" href="#about">Get Started</a></li>
       </ul>
 

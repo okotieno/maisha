@@ -22,6 +22,11 @@
             "glob": "*.svg",
             "input": "libs/shared/icon/src/lib/svg/",
             "output": "svg"
+          },
+          {
+            "glob": "*.json",
+            "input": "libs/shared/services/health-library/src/lib/",
+            "output": "assets"
           }
         ],
         "styles": [

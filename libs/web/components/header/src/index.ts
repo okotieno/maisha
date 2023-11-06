@@ -1,1 +1,1 @@
-export * from './lib/web-components-header.module';
+export * from './lib/home-header/header.component';

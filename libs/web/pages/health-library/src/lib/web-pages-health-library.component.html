@@ -1,0 +1,39 @@
+<div class="header-section"></div>
+<!-- ======= Services Section ======= -->
+<section id="health-library" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>{{ healthLibrary().title }}</h2>
+            <p>
+                {{ healthLibrary().description }}
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="bd-example">
+                <div class="d-flex">
+                    <div class="col-4">
+                        <div [class.fixed-side-menu]="fixedSideMenu()" id="list-example" class="list-group">
+                            <a *ngFor="let info of healthLibrary().info" class="list-group-item list-group-item-action"
+                               [routerLink]="['/health-libraries', healthLibrary().slug ]"
+                               [fragment]="'health-library-' + info.slug" routerLinkActive="active" [routerLinkActiveOptions]="routerLinkActiveOptions">
+                                {{ info.title }}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-8 px-4">
+                        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+
+                            <ng-container *ngFor="let info of healthLibrary().info">
+                                <h4 [id]="'health-library-' + info.slug">{{ info.title }}</h4>
+                                <p>{{ info.description }}</p>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
+

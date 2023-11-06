@@ -4,13 +4,16 @@ import {
   ElementRef,
   HostBinding,
   HostListener,
-  QueryList,
-  Renderer2, signal,
+  Renderer2,
+  signal,
   ViewChild
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { IconService } from '@furaha/shared/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ScrollService } from '@maisha/shared/services/scroll';
+import { ActivatedRoute, IsActiveMatchOptions, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'furaha-web-header',
@@ -18,7 +21,10 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: 'header.component.html',
   imports: [
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink,
+    NgForOf,
+    RouterLinkActive
   ],
   styleUrls: ['header.component.scss']
 })
@@ -27,29 +33,23 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('navbar') navbar?: ElementRef<any>
   navbarOpen = signal(false);
 
-  constructor(private renderer: Renderer2, iconService: IconService) {
+  constructor(
+    private renderer: Renderer2, iconService: IconService,
+    private scrollService: ScrollService,
+    private route: ActivatedRoute
+  ) {
     iconService.registerIcons(['menu', 'close'])
   }
 
   ngAfterViewInit(): void {
-
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        this.scrollTo(window.location.hash)
-      }
-    }
-    const navbarLinks: QueryList<HTMLAnchorElement> = this.navbar?.nativeElement.querySelectorAll('.scrollto');
-    navbarLinks.forEach((navbarlink) => {
-      const position = window.scrollY + 200
-      if (!navbarlink.hash) return
-      const section = document.querySelector(navbarlink.hash) as HTMLDivElement;
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        this.renderer.addClass(navbarlink, 'active')
-      } else {
-        this.renderer.removeClass(navbarlink, 'active')
-      }
-    })
+    // this.route.fragment.subscribe((fragment) => {
+    //   const hashLocation = '#' + fragment;
+    //   if (this.isSelectorValid(hashLocation)) {
+    //     if (document.querySelector(hashLocation)) {
+    //       this.scrollService.smoothScrollTo(hashLocation)
+    //     }
+    //   }
+    // })
   }
 
   @HostBinding('class.header-scrolled') isHeaderScrolled = false;
@@ -58,6 +58,13 @@ export class HeaderComponent implements AfterViewInit {
   onWindowScroll() {
     // Check the scroll position and toggle the 'header-scrolled' class accordingly
     this.isHeaderScrolled = window.scrollY > 100;
+  }
+
+  isSelectorValid(selector: string) {
+    if (selector === '#') return false;
+    // Regular expression to match common CSS selector patterns
+    const selectorRegex = /^([a-zA-Z0-9-_*#.\s>+~:[\]=|^$,)(]+)+$/;
+    return selectorRegex.test(selector);
   }
 
   handleScrollToClick(e: any) {
@@ -71,25 +78,30 @@ export class HeaderComponent implements AfterViewInit {
         navbarToggle?.classList.toggle('bi-x')
       }
 
-      this.scrollTo(e.target.hash)
+      this.scrollService.smoothScrollTo(e.target.hash)
     }
   }
 
-  scrollTo = (el: string) => {
-    const header = document.querySelector('#header') as HTMLDivElement
-    const offset = header?.offsetHeight
-
-    const elementPos = (document.querySelector(el) as HTMLDivElement).offsetTop
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
 
   toggleNavBar() {
     this.navbarOpen.set(!this.navbarOpen());
     // document.querySelector('#navbar')?.classList.toggle('navbar-mobile')
     // this.classList.toggle('bi-list')
     // this.classList.toggle('bi-x')
+  }
+
+  links = signal([
+    {slug: 'hero', label: 'Home'},
+    {slug: 'about', label: 'About Us'},
+    {slug: 'health-library', label: 'Health Library'},
+    {slug: 'team', label: 'Our Team'},
+    {slug: 'contact', label: 'Contact Us'},
+    {slug: 'project', label: 'Our Projects'},
+  ])
+  routerLinkActiveOptions: IsActiveMatchOptions = {
+    fragment: 'exact',
+    paths: 'exact',
+    queryParams: 'exact',
+    matrixParams: 'exact'
   }
 }
