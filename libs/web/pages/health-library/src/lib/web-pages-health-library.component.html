@@ -3,8 +3,8 @@
 <section id="health-library" class="services section-bg">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
-            <h2>{{ healthLibrary().title }}</h2>
-            <p>
+            <h2 data-aos="fade-down">{{ healthLibrary().title }}</h2>
+            <p data-aos="fade-down">
                 {{ healthLibrary().description }}
             </p>
         </div>
@@ -25,8 +25,8 @@
                         <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
 
                             <ng-container *ngFor="let info of healthLibrary().info">
-                                <h4 [id]="'health-library-' + info.slug">{{ info.title }}</h4>
-                                <p>{{ info.description }}</p>
+                                <h4 data-aos="fade-up" [id]="'health-library-' + info.slug">{{ info.title }}</h4>
+                                <p data-aos="fade-up">{{ info.description }}</p>
                             </ng-container>
                         </div>
                     </div>
