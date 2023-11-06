@@ -41,6 +41,7 @@
       "@maisha/shared/services/scroll": [
         "libs/shared/services/scroll/src/index.ts"
       ],
+      "@maisha/shared/tokens": ["libs/shared/tokens/src/index.ts"],
       "@maisha/web/components/footer": [
         "libs/web/components/footer/src/index.ts"
       ],
