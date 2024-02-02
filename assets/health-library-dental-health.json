@@ -28,5 +28,15 @@
       "slug":"prevention-measures",
       "description": "Preventing dental problems involves maintaining good oral hygiene practices such as brushing teeth at least twice a day, flossing daily, and using mouthwash. A balanced diet low in sugary foods and drinks helps prevent tooth decay. Regular dental check-ups and cleanings are essential to catch issues early. Avoiding tobacco products and limiting alcohol consumption can reduce the risk of oral cancers. Wearing mouthguards during sports activities can prevent dental injuries. Additionally, practicing stress-reducing techniques can alleviate conditions like teeth grinding, which can damage teeth over time."
     }
+  ],
+  "blogs": [
+    {
+      "slug": "children-teeth",
+      "title": "Children’s teeth"
+    },
+    {
+      "slug": "periodontal-gum-disease",
+      "title": "Periodontal (Gum Disease)"
+    }
   ]
 }
