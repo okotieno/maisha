@@ -7,14 +7,20 @@ import { HealthLibraryService } from '@maisha/shared/services/health-library';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 export interface IHealthLibrary {
-  title:       string;
+  title: string;
   description: string;
-  slug:        string;
-  info:        Info[];
+  slug: string;
+  info: Info[];
+  blogs?: IBlog[]
+}
+
+export interface IBlog {
+  title: string;
+  slug: string;
 }
 
 export interface Info {
-  title:       string;
+  title: string;
   description: string;
   slug: string;
 }
@@ -22,29 +28,33 @@ export interface Info {
 @Component({
   selector: 'maisha-web-pages-health-library',
   standalone: true,
-  imports: [MatButtonModule, NgForOf, RouterLink, RouterLinkActive],
+  imports: [MatButtonModule, RouterLink, RouterLinkActive],
   templateUrl: './web-pages-health-library.component.html',
   styleUrls: ['./web-pages-health-library.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WebPagesHealthLibraryComponent {
 
   fixedSideMenu = signal(false);
-  @HostListener('window:scroll', ['$event']) private onScroll($event:Event):void {
+
+  @HostListener('window:scroll', ['$event'])
+  private onScroll($event: Event): void {
     this.fixedSideMenu.set(window.scrollY > 245);
   };
+
   healthLibrarySlug$ = this.route.paramMap.pipe(
     map((params) => params.get('healthLibrarySlug'))
-  )
+  );
   healthLibrary$ = this.healthLibrarySlug$.pipe(
     switchMap((slug) => this.healthLibraryService.getLibrary(slug as string))
-  )
-  healthLibrary = signal<IHealthLibrary>({description: '', info: [], slug: '', title: ''})
+  );
+  healthLibrary = signal<IHealthLibrary>({ description: '', info: [], slug: '', title: '' });
+
   constructor(private route: ActivatedRoute, private healthLibraryService: HealthLibraryService) {
     this.healthLibrary$.pipe(
       tap((res) => this.healthLibrary.set(res as IHealthLibrary)),
       takeUntilDestroyed()
-    ).subscribe()
+    ).subscribe();
   }
 
   routerLinkActiveOptions: IsActiveMatchOptions = {
@@ -52,6 +62,6 @@ export class WebPagesHealthLibraryComponent {
     paths: 'exact',
     queryParams: 'ignored',
     matrixParams: 'ignored'
-  }
+  };
 
 }

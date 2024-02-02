@@ -1,39 +1,54 @@
 <div class="header-section"></div>
 <!-- ======= Services Section ======= -->
 <section id="health-library" class="services section-bg">
-    <div class="container" data-aos="fade-up">
-        <div class="section-title">
-            <h2 data-aos="fade-down">{{ healthLibrary().title }}</h2>
-            <p data-aos="fade-down">
-                {{ healthLibrary().description }}
-            </p>
-        </div>
-
-        <div class="row">
-            <div class="bd-example">
-                <div class="d-flex">
-                    <div class="col-4">
-                        <div [class.fixed-side-menu]="fixedSideMenu()" id="list-example" class="list-group">
-                            <a *ngFor="let info of healthLibrary().info" class="list-group-item list-group-item-action"
-                               [routerLink]="['/health-libraries', healthLibrary().slug ]"
-                               [fragment]="'health-library-' + info.slug" routerLinkActive="active" [routerLinkActiveOptions]="routerLinkActiveOptions">
-                                {{ info.title }}
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-8 px-4">
-                        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
-
-                            <ng-container *ngFor="let info of healthLibrary().info">
-                                <h4 data-aos="fade-up" [id]="'health-library-' + info.slug">{{ info.title }}</h4>
-                                <p data-aos="fade-up">{{ info.description }}</p>
-                            </ng-container>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2 data-aos="fade-down">{{ healthLibrary().title }}</h2>
+      <p data-aos="fade-down">
+        {{ healthLibrary().description }}
+      </p>
     </div>
+
+    <div class="row">
+      <div class="bd-example">
+        <div class="d-flex">
+          <div class="col-4">
+            <div [class.fixed-side-menu]="fixedSideMenu()">
+              <div id="list-example" class="list-group">
+                @for (info of healthLibrary().info;track info.slug) {
+                  <a class="list-group-item list-group-item-action"
+                     [routerLink]="['/health-libraries', healthLibrary().slug ]"
+                     [fragment]="'health-library-' + info.slug" routerLinkActive="active"
+                     [routerLinkActiveOptions]="routerLinkActiveOptions">
+                    {{ info.title }}
+                  </a>
+                }
+              </div>
+              @if (healthLibrary().blogs) {
+                <div class="mt-3">
+                  <h2>Blogs</h2>
+                  @for (blog of healthLibrary().blogs;track blog.slug) {
+                    <ul>
+                      <li><a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a></li>
+                    </ul>
+                  }
+                </div>
+              }
+            </div>
+
+          </div>
+          <div class="col-8 px-4">
+            <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+              @for (info of healthLibrary().info;track info.slug) {
+                <h4 data-aos="fade-up" [id]="'health-library-' + info.slug">{{ info.title }}</h4>
+                <p data-aos="fade-up">{{ info.description }}</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section><!-- End Services Section -->
 

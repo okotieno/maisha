@@ -31,6 +31,7 @@
         "libs/web/components/header/src/index.ts"
       ],
       "@furaha/web/components/hero": ["libs/web/components/hero/src/index.ts"],
+      "@furaha/web/pages/blogs": ["libs/web/pages/blogs/src/index.ts"],
       "@furaha/web/pages/health-library": [
         "libs/web/pages/health-library/src/index.ts"
       ],

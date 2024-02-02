@@ -10,6 +10,12 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('@furaha/web/pages/health-library')
   },
   {
+    path: 'blogs/:blogSlug',
+    loadComponent: () => import('@furaha/web/pages/blogs').then(
+      m => m.ViewBlogsComponent
+    )
+  },
+  {
     path: '**',
     loadComponent: () => import('@furaha/web/pages/home')
   }

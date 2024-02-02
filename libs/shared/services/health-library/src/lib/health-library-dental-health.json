@@ -31,11 +31,11 @@
   ],
   "blogs": [
     {
-      "id": "children-teeth",
+      "slug": "children-teeth",
       "title": "Children’s teeth"
     },
     {
-      "id": "periodontal-gum-disease",
+      "slug": "periodontal-gum-disease",
       "title": "Periodontal (Gum Disease)"
     }
   ]
