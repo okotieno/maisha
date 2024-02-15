@@ -9,9 +9,9 @@
       </p>
     </div>
 
-    <div class="row">
+    <div class="row justify-content-center">
       @for (healthLibrary of healthLibraries();track healthLibrary.title) {
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-xl-5 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box">
             <div><i class="bx bxl-dribbble"></i></div>
             <h4><a [routerLink]="['/health-libraries', healthLibrary.slug]">{{ healthLibrary.title }}</a></h4>

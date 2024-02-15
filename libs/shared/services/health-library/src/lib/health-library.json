@@ -5,18 +5,8 @@
     "slug": "preventive-care"
   },
   {
-    "title": "Mental Health",
-    "description": "Explore a wealth of resources on mental health disorders, effective coping strategies, diverse therapy options, and mindfulness techniques. Our goal is to address common mental health concerns and combat stigma through education, fostering a supportive environment for mental well-being.",
-    "slug": "mental-health"
-  },
-  {
     "title": "Dental Health",
     "description": "Discover valuable resources covering the diagnosis, prevention, and treatment of diseases and conditions related to teeth, gums, and overall oral health. Recognizing that dental health is integral to your overall well-being, we provide insights to help you maintain a healthy and vibrant smile.",
     "slug": "dental-health"
-  },
-  {
-    "title": "Healthy Living Tips",
-    "description": "Delve into a treasure trove of tips designed to promote a holistic and healthy lifestyle. From personalized fitness routines and balanced nutrition guidance to mental health strategies and stress management techniques, empower yourself with practical knowledge for a fulfilling and balanced life.",
-    "slug": "healthy-living-tips"
   }
 ]
