@@ -3,7 +3,7 @@ import { init } from 'aos';
 import { ApplicationConfig, inject } from '@angular/core';
 import {
   provideRouter,
-  withEnabledBlockingInitialNavigation, withHashLocation,
+  withEnabledBlockingInitialNavigation, withHashLocation
 } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { HttpHandlerFn, HttpRequest, provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -12,19 +12,20 @@ import { ENVIRONMENT, EnvironmentInterface } from '@maisha/shared/tokens';
 
 init({
   duration: 1000,
-  easing: "ease-in-out",
+  easing: 'ease-in-out',
   once: true,
   mirror: false
 });
 
 const addBaseUrl = (req: HttpRequest<any>, next: HttpHandlerFn) => {
   const env = inject(ENVIRONMENT);
-  console.log({url: `${env.baseHref}${req.url.replace(/\//, '')}`})
+  console.log({ url: `${env.baseHref}${req.url.replace(/\//, '')}` });
+  console.log({ html: /\.html/.test(req.url) });
   let apiReq = req;
-  if (/json/.test(req.url)) {
-    apiReq = req.clone({url: `${env.baseHref}${req.url.replace(/\//, '')}`});
+  if (/json/.test(req.url) || /\.html/.test(req.url)) {
+    apiReq = req.clone({ url: `${env.baseHref}${req.url.replace(/\//, '')}` });
   }
-  return next(apiReq)
+  return next(apiReq);
 };
 
 export const appConfig: ApplicationConfig = {
@@ -44,5 +45,5 @@ export const appConfig: ApplicationConfig = {
         baseHref: process.env['NX_BASE_HREF']
       } as EnvironmentInterface
     }
-  ],
+  ]
 };
