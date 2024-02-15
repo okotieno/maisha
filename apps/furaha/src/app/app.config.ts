@@ -19,10 +19,8 @@ init({
 
 const addBaseUrl = (req: HttpRequest<any>, next: HttpHandlerFn) => {
   const env = inject(ENVIRONMENT);
-  console.log({ url: `${env.baseHref}${req.url.replace(/\//, '')}` });
-  console.log({ html: /\.html/.test(req.url) });
   let apiReq = req;
-  if (/json/.test(req.url) || /\.html/.test(req.url)) {
+  if ( /\.json|\.html|\.jpg/.test(req.url)) {
     apiReq = req.clone({ url: `${env.baseHref}${req.url.replace(/\//, '')}` });
   }
   return next(apiReq);
