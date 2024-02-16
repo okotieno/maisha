@@ -37,6 +37,14 @@
     {
       "slug": "periodontal-gum-disease",
       "title": "Periodontal (Gum Disease)"
+    },
+    {
+      "slug": "mouth-oral-cancer",
+      "title": "Mouth (Oral) Cancer"
+    },
+    {
+      "slug": "dental-decay",
+      "title": "Dental Decay"
     }
   ]
 }
