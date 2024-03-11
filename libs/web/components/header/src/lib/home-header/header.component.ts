@@ -42,6 +42,8 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
+    this.loadGoogleTranslateScript();
     // this.route.fragment.subscribe((fragment) => {
     //   const hashLocation = '#' + fragment;
     //   if (this.isSelectorValid(hashLocation)) {
@@ -103,5 +105,26 @@ export class HeaderComponent implements AfterViewInit {
     paths: 'exact',
     queryParams: 'exact',
     matrixParams: 'exact'
+  }
+
+  loadGoogleTranslateScript() {
+    const script = this.renderer.createElement('script');
+    script.type = 'text/javascript';
+    script.text = `
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        includedLanguages: 'en,fr,sw'
+      }, 'google_translate_element');
+    }
+  `;
+
+    const scriptSrc = this.renderer.createElement('script');
+    scriptSrc.type = 'text/javascript';
+    scriptSrc.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+
+    this.renderer.appendChild(document.head, script);
+    this.renderer.appendChild(document.head, scriptSrc);
   }
 }

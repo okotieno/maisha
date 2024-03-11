@@ -82,3 +82,16 @@ section {
 .section-title p {
   margin-bottom: 0;
 }
+
+#google_translate_element {
+  opacity: 0.8;
+  margin-left: 50px !important;
+  select {
+    background: none;
+    color:#383ffa;
+    border: none;
+    border-radius:3px;
+    padding:16px 18px !important;
+
+  }
+}
