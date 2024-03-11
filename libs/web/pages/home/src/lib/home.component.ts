@@ -8,6 +8,7 @@ import { TeamComponent } from '@furaha/team';
 import { HealthLibraryComponent } from '@maisha/web/components/health-library';
 import { FooterComponent } from '@maisha/web/components/footer';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -25,10 +26,12 @@ import { Router } from '@angular/router';
   styleUrls: ['home.component.scss']
 })
 export class HomeComponent {
-  constructor(private router: Router, private elementRef: ElementRef) { }
+  activeSection = 'hero';
+  constructor(
+    private location: Location,
+    private router: Router, private elementRef: ElementRef) { }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
-    console.log({ event })
 
     // Get all section elements
     const sections = this.elementRef.nativeElement.querySelectorAll('section');
@@ -48,7 +51,9 @@ export class HomeComponent {
   }
 
   changeFragment(fragment: string) {
-    // Navigate to the given fragment
-    this.router.navigate([], { fragment: fragment });
+    if(fragment !== this.activeSection && fragment.length > 0) {
+      this.activeSection = fragment;
+      this.location.replaceState(`/#${fragment}`);
+    }
   }
 }
