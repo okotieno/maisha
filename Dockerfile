@@ -22,9 +22,9 @@ FROM nginx:alpine
 
 COPY --from=builder /app/dist/apps/furaha /usr/share/nginx/html
 
-COPY --from=builder /app/apps/app/nginx/certs /etc/ssl/certs
+COPY --from=builder /app/apps/furaha/nginx/certs /etc/ssl/certs
 
-COPY --from=builder /app/apps/app/nginx/default.conf /etc/nginx/default.conf
+COPY --from=builder /app/apps/furaha/nginx/default.conf /etc/nginx/default.conf
 
 EXPOSE 80
 
