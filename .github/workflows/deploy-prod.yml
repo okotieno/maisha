@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            docker pull ghcr.io/${{ github.repository_owner }}/app:latest
+            docker pull ghcr.io/${{ github.repository_owner }}/maishaweb:latest
             docker stop maishaweb || true
             docker rm maishaweb || true
             docker run -d --name maishaweb \
