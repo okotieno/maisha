@@ -31,7 +31,6 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/app:latest
           cache-from: type=gha
           cache-to: type=gha
-          file: Dockerfile
           build-args: |
             NX_BASE_HREF=${{ secrets.NX_BASE_HREF }}
       - name: Deploy
