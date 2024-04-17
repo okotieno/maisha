@@ -55,5 +55,5 @@ jobs:
             -l "traefik.http.routers.maishaweb.tls.certresolver=certresolver"  \
             -e NX_ENVIRONMENT=${{ env.NX_ENVIRONMENT }} \
             -e NX_BASE_HREF=${{ env.NX_BASE_HREF }} \
-            -p 4200:80 \
+            -p 4201:80 \
             ghcr.io/${{ github.repository_owner }}/maishaweb:latest
