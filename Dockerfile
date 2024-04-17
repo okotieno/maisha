@@ -16,7 +16,7 @@ RUN pnpm i
 
 COPY . .
 
-RUN pnpm nx build app -- --baseHref=/furaha/
+RUN pnpm nx build furaha -- --baseHref=/furaha/
 
 FROM nginx:alpine
 
