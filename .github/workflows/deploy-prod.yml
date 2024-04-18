@@ -52,7 +52,7 @@ jobs:
             -l "traefik.http.routers.maishaweb.service=maishaweb"  \
             -l "traefik.http.services.maishaweb.loadbalancer.server.port=80"  \
             -l "traefik.http.routers.maishaweb.tls=true"  \
-            -l "traefik.http.routers.maishaweb.tls.certresolver=certresolverAlt"  \
+            -l "traefik.http.routers.maishaweb.tls.certresolver=certresolver"  \
             -l "traefik.http.routers.maishaweb.entrypoints=websecure" \
             -e NX_ENVIRONMENT=${{ env.NX_ENVIRONMENT }} \
             -e NX_BASE_HREF=${{ env.NX_BASE_HREF }} \
