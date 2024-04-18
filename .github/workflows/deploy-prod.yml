@@ -55,7 +55,7 @@ jobs:
             -l "traefik.http.routers.maishaweb.tls.certresolver=certresolver"  \
             -l "traefik.http.routers.maishaweb.tls.domains[0].main=healthymaisha.com"  \
             -l "traefik.http.routers.maishaweb.tls.domains[0].sans=*.healthymaisha.com" \
-            -l "traefik.http.routers.maishaweb.entrypoints=websecure"
+            -l "traefik.http.routers.maishaweb.entrypoints=websecure" \
             -e NX_ENVIRONMENT=${{ env.NX_ENVIRONMENT }} \
             -e NX_BASE_HREF=${{ env.NX_BASE_HREF }} \
             -p 4201:80 \
