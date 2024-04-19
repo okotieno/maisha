@@ -45,14 +45,16 @@ jobs:
             docker stop maishaweb || true
             docker rm maishaweb || true
             docker run -d --name maishaweb \
-            -l "traefik.http.routers.maishaweb.rule=Host(\`healthymaisha.com\`) && PathPrefix(\`/web\`)" \
-            -l "traefik.http.routers.maishaweb.middlewares=maishawebpathstrip@docker" \
+            -l "traefik.http.routers.maishaweb.rule=Host(\`healthymaisha.com\`)" \
+            -l "traefik.http.routers.maishaweb.middlewares=maishawebpathstrip@docker,maishawebredirect@docker" \
             -l "traefik.http.middlewares.maishawebpathstrip.stripprefix.prefixes=/web" \
             -l "traefik.http.middlewares.maishaweb.stripprefix.prefixes=/web" \
-            -l "traefik.http.routers.maishaweb.service=maishaweb"  \
-            -l "traefik.http.services.maishaweb.loadbalancer.server.port=80"  \
-            -l "traefik.http.routers.maishaweb.tls=true"  \
-            -l "traefik.http.routers.maishaweb.tls.certresolver=certresolver"  \
+            -l "traefik.http.middlewares.maishawebredirect.redirectregex.regex=^https?://healthymaisha.com/$$&" \
+            -l "traefik.http.middlewares.maishawebredirect.redirectregex.replacement=https://healthymaisha.com/web" \
+            -l "traefik.http.routers.maishaweb.service=maishaweb" \
+            -l "traefik.http.services.maishaweb.loadbalancer.server.port=80" \
+            -l "traefik.http.routers.maishaweb.tls=true" \
+            -l "traefik.http.routers.maishaweb.tls.certresolver=certresolver" \
             -l "traefik.http.routers.maishaweb.entrypoints=websecure" \
             -e NX_ENVIRONMENT=${{ env.NX_ENVIRONMENT }} \
             -e NX_BASE_HREF=${{ env.NX_BASE_HREF }} \
