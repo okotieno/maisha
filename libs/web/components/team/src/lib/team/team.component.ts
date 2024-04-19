@@ -20,7 +20,7 @@ export interface TeamMember {
 export class TeamComponent {
   teamMembers: TeamMember[] = [
     {
-      name: 'Abhishek Kansara',
+      name: 'Dr Abhishek Kansara',
       title: 'CEO & Founder',
       description: 'BDS (Hons) MFDS RCS (Eng) | DCT2 Restorative ',
       email: 'abhishek@maishahealthkenya.co.ke',

@@ -5,6 +5,7 @@ import { ActivatedRoute, IsActiveMatchOptions, RouterLink, RouterLinkActive } fr
 import { map, switchMap, tap } from 'rxjs';
 import { HealthLibraryService } from '@maisha/shared/services/health-library';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatDividerModule } from '@angular/material/divider';
 
 export interface IHealthLibrary {
   title: string;
@@ -28,7 +29,7 @@ export interface Info {
 @Component({
   selector: 'maisha-web-pages-health-library',
   standalone: true,
-  imports: [MatButtonModule, RouterLink, RouterLinkActive],
+  imports: [MatButtonModule, RouterLink, RouterLinkActive, MatDividerModule],
   templateUrl: './web-pages-health-library.component.html',
   styleUrls: ['./web-pages-health-library.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
