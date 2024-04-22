@@ -47,10 +47,10 @@ jobs:
             docker run -d --name maishaweb \
             -l "traefik.http.routers.maishaweb.rule=Host(\`healthymaisha.com\`)" \
             -l "traefik.http.routers.maishaweb.middlewares=maishawebpathstrip@docker,maishawebredirect@docker" \
-            -l "traefik.http.middlewares.maishawebpathstrip.stripprefix.prefixes=/web" \
-            -l "traefik.http.middlewares.maishaweb.stripprefix.prefixes=/web" \
+            -l "traefik.http.middlewares.maishawebpathstrip.stripprefix.prefixes=/ke" \
+            -l "traefik.http.middlewares.maishaweb.stripprefix.prefixes=/ke" \
             -l "traefik.http.middlewares.maishawebredirect.redirectregex.regex=^https?://healthymaisha.com/$$&" \
-            -l "traefik.http.middlewares.maishawebredirect.redirectregex.replacement=https://healthymaisha.com/web" \
+            -l "traefik.http.middlewares.maishawebredirect.redirectregex.replacement=https://healthymaisha.com/ke" \
             -l "traefik.http.routers.maishaweb.service=maishaweb" \
             -l "traefik.http.services.maishaweb.loadbalancer.server.port=80" \
             -l "traefik.http.routers.maishaweb.tls=true" \
