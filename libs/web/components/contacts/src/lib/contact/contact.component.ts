@@ -13,11 +13,11 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
-  FormData = this.builder.group({
-    Fullname: ['', [Validators.required]],
-    Email: ['', [Validators.required, Validators.email]],
-    Company: [''],
-    Message: ['', [Validators.required]]
+  formData = this.builder.group({
+    fullName: ['', [Validators.required]],
+    subject: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', [Validators.required]]
   })
   emailExists = false;
   constructor(private builder: FormBuilder,
@@ -26,8 +26,8 @@ export class ContactComponent {
   }
 
 onSubmit(formData: any) {
-  if (this.FormData.valid && !this.emailExists) {
-    const formDataValue = this.FormData.value;
+  if (this.formData.valid && !this.emailExists) {
+    const formDataValue = this.formData.value;
     this.contactService.PostMessage(formDataValue).subscribe({
       next: (response) => {
         console.log('Success:', response);
