@@ -41,7 +41,7 @@ export class WebPagesHealthLibraryComponent {
   @HostListener('window:scroll', ['$event'])
   private onScroll($event: Event): void {
     this.fixedSideMenu.set(window.scrollY > 245);
-  };
+  }
 
   healthLibrarySlug$ = this.route.paramMap.pipe(
     map((params) => params.get('healthLibrarySlug'))

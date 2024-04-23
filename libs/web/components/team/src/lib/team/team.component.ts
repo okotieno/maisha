@@ -24,7 +24,7 @@ export class TeamComponent {
       title: 'CEO & Founder',
       description: 'BDS (Hons) MFDS RCS (Eng) | DCT2 Restorative ',
       email: 'abhishek@maishahealthkenya.co.ke',
-      imageUrl: "https://media.licdn.com/dms/image/C5603AQFY0yBu3sP9tg/profile-displayphoto-shrink_800_800/0/1544964726504?e=1713398400&v=beta&t=tVhW9Fs69ci0HtPga8pdwW38Yw7RrHp5z8vpcTZ2fI0"
+      imageUrl: "/assets/img/abhishek-profile.jpeg"
     },
     {
       name: 'Dr Dharmit Modasia',
