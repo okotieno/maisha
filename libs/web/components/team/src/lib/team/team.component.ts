@@ -31,15 +31,15 @@ export class TeamComponent {
       title: 'Project Management Lead ',
       description: 'BDS',
       email: 'dharmit@maishahealthkenya.co.ke',
-      imageUrl: "/assets/img/dr.png"
+      imageUrl: "/assets/img/dr.jpg"
     },
-    // {
-    //   name: 'Owen Kelvin',
-    //   title: 'CTO',
-    //   description: 'BBS Actuarial',
-    //   email: 'owen@maishahealthkenya.co.ke',
-    //   imageUrl: "https://media.licdn.com/dms/image/C5103AQE_PgQB_w77gQ/profile-displayphoto-shrink_800_800/0/1517427013563?e=1713398400&v=beta&t=d1FBFJ_UsVCC1_ybcOrlwLukim2siIP2SMdrigq33GQ"
-    // },
+    {
+      name: 'Owen Kelvin',
+      title: 'CTO',
+      description: 'BBS Actuarial',
+      email: 'owen@maishahealthkenya.co.ke',
+      imageUrl: "/assets/img/owen.jpeg"
+    },
   ];
 
   constructor(private iconService: IconService) {
