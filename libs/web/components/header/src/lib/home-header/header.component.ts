@@ -115,7 +115,7 @@ export class HeaderComponent implements AfterViewInit {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        includedLanguages: 'en,fr,sw'
+        includedLanguages: 'en,fr,sw,so,ar'
       }, 'google_translate_element');
     }
   `;
