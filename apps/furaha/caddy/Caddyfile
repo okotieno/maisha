@@ -1,6 +1,5 @@
 healthymaisha.com {
   root * /usr/share/caddy/dist
   file_server
-  index index.html
   encode gzip
- }
+}
