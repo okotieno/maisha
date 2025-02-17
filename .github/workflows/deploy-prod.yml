@@ -33,30 +33,21 @@ jobs:
           cache-to: type=gha
           build-args: |
             NX_BASE_HREF=${{ secrets.NX_BASE_HREF }}
+
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.DROPLET_IP }}
-          username: ${{ secrets.DROPLET_USERNAME }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
+          host: ${{ secrets.CONTABO_IP }}
+          username: ${{ secrets.CONTABO_USERNAME }}
+          key: ${{ secrets.CONTABO_SSH_KEY }}
           script: |
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker pull ghcr.io/${{ github.repository_owner }}/maishaweb:latest
             docker stop maishaweb || true
             docker rm maishaweb || true
             docker run -d --name maishaweb \
-            -l "traefik.http.routers.maishaweb.rule=Host(\`healthymaisha.com\`)" \
-            -l "traefik.http.routers.maishaweb.middlewares=maishawebpathstrip@docker,maishawebredirect@docker" \
-            -l "traefik.http.middlewares.maishawebpathstrip.stripprefix.prefixes=/ke" \
-            -l "traefik.http.middlewares.maishaweb.stripprefix.prefixes=/ke" \
-            -l "traefik.http.middlewares.maishawebredirect.redirectregex.regex=^https?://healthymaisha.com/$$&" \
-            -l "traefik.http.middlewares.maishawebredirect.redirectregex.replacement=https://healthymaisha.com/ke" \
-            -l "traefik.http.routers.maishaweb.service=maishaweb" \
-            -l "traefik.http.services.maishaweb.loadbalancer.server.port=80" \
-            -l "traefik.http.routers.maishaweb.tls=true" \
-            -l "traefik.http.routers.maishaweb.tls.certresolver=certresolver" \
-            -l "traefik.http.routers.maishaweb.entrypoints=websecure" \
+            -p 4201:80 \
             -e NX_ENVIRONMENT=${{ env.NX_ENVIRONMENT }} \
             -e NX_BASE_HREF=${{ env.NX_BASE_HREF }} \
-            -p 4201:80 \
             ghcr.io/${{ github.repository_owner }}/maishaweb:latest
+            systemctl restart caddy
