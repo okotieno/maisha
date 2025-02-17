@@ -1,8 +1,3 @@
-{
-    # Auto HTTPS unless disabled
-    auto_https on
-}
-
 healthymaisha.com, www.healthymaisha.com {
     root * /srv/dist
     file_server
