@@ -1,6 +1,6 @@
-:80
-handle_path / {
-    root * /usr/share/caddy
-    file_server
-    encode gzip
-}
+healthymaisha.com {
+  root * /usr/share/caddy/dist
+  file_server
+  index index.html
+  encode gzip
+ }
