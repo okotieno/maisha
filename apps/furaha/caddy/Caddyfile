@@ -2,4 +2,12 @@
 handle_path / {
     root * /usr/share/caddy
     file_server
+    encode gzip
+
+     mime .js text/javascript
+     mime .mjs text/javascript
+     mime .json application/json
+     mime .wasm application/wasm
+     mime .css text/css
+      mime .svg image/svg+xml
 }
