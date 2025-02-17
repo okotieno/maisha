@@ -21,4 +21,5 @@ COPY --from=builder /app/dist/apps/furaha /usr/share/caddy
 COPY --from=builder /app/apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80 443
+
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
