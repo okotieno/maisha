@@ -19,7 +19,7 @@ COPY . .
 # Build the application
 ARG NX_BASE_HREF
 ENV NX_BASE_HREF=${NX_BASE_HREF}
-RUN pnpm build furaha
+RUN pnpm build
 
 # Use Caddy as the production server
 FROM caddy:2.7.4
