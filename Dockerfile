@@ -7,11 +7,11 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
-
 #Install pnpm
 RUN install -g pnpm
+
+# Install dependencies
+RUN pnpm install
 
 # Copy the rest of the application files
 COPY . .
