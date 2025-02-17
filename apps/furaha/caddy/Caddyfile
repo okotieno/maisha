@@ -1,9 +1,9 @@
-healthymaisha.com, www.healthymaisha.com {
-    root * /srv
+:80
+handle_path / {
+    root * /usr/share/caddy
     file_server
+}
 
-    @notFound {
-        file /srv/index.html
-    }
-    rewrite @notFound /index.html
+handle {
+    respond "Not Found" 404
 }
