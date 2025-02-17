@@ -12,7 +12,7 @@ ENV NX_BASE_HREF=${NX_BASE_HREF}
 RUN pnpm build
 
 # Use Caddy as the production server
-FROM caddy:2.7.4
+FROM caddy:alpine
 
 # Copy built files from correct output directory
 COPY --from=builder /app/dist/apps/furaha /srv/dist
