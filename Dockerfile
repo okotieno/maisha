@@ -27,11 +27,6 @@ WORKDIR /srv
 # Copy built application
 COPY --from=builder /app/dist/apps/furaha /srv
 
-# Copy Caddy configuration
-COPY --from=builder /app/apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
-
-# Expose necessary ports
+COPY Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80 443
-
-# Default command to run Caddy
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
