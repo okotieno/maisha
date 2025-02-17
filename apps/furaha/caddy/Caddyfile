@@ -3,8 +3,3 @@ handle_path / {
     root * /usr/share/caddy
     file_server
 }
-
-
-handle {
-    respond "Not Found" 404
-}
