@@ -1,0 +1,13 @@
+healthymaisha.com, www.healthymaisha.com {
+    root * /srv
+    file_server
+
+    @notFound {
+        file /srv/index.html
+    }
+    rewrite @notFound /index.html
+
+    tls {
+        certificates /etc/ssl/certs/fullchain.pem /etc/ssl/certs/privkey.pem
+    }
+}

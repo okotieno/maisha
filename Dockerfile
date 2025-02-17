@@ -1,4 +1,5 @@
-FROM node:18 as builder
+# Stage 1: Build
+FROM node:18 AS builder
 
 WORKDIR /app
 
@@ -16,16 +17,21 @@ RUN pnpm i
 
 COPY . .
 
-RUN pnpm nx build furaha -- --baseHref=/ke/
+RUN pnpm nx build furaha -- --baseHref=$NX_BASE_HREF
 
-FROM nginx:alpine
+# Stage 2: Serve with Caddy
+FROM caddy:latest
 
-COPY --from=builder /app/dist/apps/furaha /usr/share/nginx/html
+WORKDIR /srv
 
-COPY --from=builder /app/apps/furaha/nginx/certs /etc/ssl/certs
+# Copy built application
+COPY --from=builder /app/dist/apps/furaha /srv
 
-COPY --from=builder /app/apps/furaha/nginx/default.conf /etc/nginx/default.conf
+# Copy Caddy configuration
+COPY --from=builder /app/apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
 
-EXPOSE 80
+# Expose necessary ports
+EXPOSE 80 443
 
-CMD ["nginx", "-g", "daemon off;"]
+# Default command to run Caddy
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
