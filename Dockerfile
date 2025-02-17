@@ -20,6 +20,5 @@ COPY --from=builder /app/dist/apps/furaha /usr/share/caddy
 # Use simplified Caddyfile configuration
 COPY --from=builder /app/apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 443
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
