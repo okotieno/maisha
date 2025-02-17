@@ -1,12 +1,8 @@
 healthymaisha.com, www.healthymaisha.com {
     root * /srv/dist
-    file_server
+    file_server {
+        # For SPA routing: try files first, fallback to index.html
+        try_files {path} {path}/ /index.html
+    }
     encode gzip
-
-    @notFound {
-        path_regexp .*
-    }
-    handle @notFound {
-        respond "404 Not Found" 404
-    }
 }
