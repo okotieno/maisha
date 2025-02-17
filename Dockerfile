@@ -27,6 +27,6 @@ WORKDIR /srv
 # Copy built application
 COPY --from=builder /app/dist/apps/furaha /srv
 
-COPY apps/furaha/Caddyfile /etc/caddy/Caddyfile
+COPY apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80 443
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
