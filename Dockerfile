@@ -1,32 +1,40 @@
-# Stage 1: Build
+# Use Node.js for building the application
 FROM node:18 AS builder
 
+# Set the working directory
 WORKDIR /app
 
-# Define build arguments
-ARG NX_BASE_HREF
-
-# Set environment variables
-ENV NX_BASE_HREF=$NX_BASE_HREF
-
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm i -g pnpm
+# Install dependencies
+RUN npm install
 
-RUN pnpm i
+#Install pnpm
+RUN install -g pnpm
 
+# Copy the rest of the application files
 COPY . .
 
-RUN pnpm nx build furaha -- --baseHref=$NX_BASE_HREF
+# Build the application
+ARG NX_BASE_HREF
+ENV NX_BASE_HREF=${NX_BASE_HREF}
+RUN pnpm build furaha
 
-# Stage 2: Serve with Caddy
-FROM caddy:latest
+# Use Caddy as the production server
+FROM caddy:2.7.4
 
+# Set working directory
 WORKDIR /srv
 
-# Copy built application
-COPY --from=builder /app/dist/apps/furaha /srv
+# Copy built application from builder
+COPY --from=builder /apps/furaha/dist ./dist
 
+# Copy the Caddyfile
 COPY apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
+
+# Expose ports for HTTP and HTTPS
 EXPOSE 80 443
+
+# Start Caddy
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]

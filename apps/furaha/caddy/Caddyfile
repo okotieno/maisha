@@ -1,9 +1,17 @@
-:80
-handle_path / {
-    root * /usr/share/caddy
-    file_server
+{
+    # Auto HTTPS unless disabled
+    auto_https on
 }
 
-handle {
-    respond "Not Found" 404
+healthymaisha.com, www.healthymaisha.com {
+    root * /srv/dist
+    file_server
+    encode gzip
+
+    @notFound {
+        path_regexp .*
+    }
+    handle @notFound {
+        respond "404 Not Found" 404
+    }
 }
