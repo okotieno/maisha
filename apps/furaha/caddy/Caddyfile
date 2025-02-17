@@ -1,5 +1,10 @@
-healthymaisha.com, www.healthymaisha.com {
-    root * /srv/dist
+:80
+handle_path / {
+    root * /usr/share/caddy
     file_server
-    encode gzip
+}
+
+
+handle {
+    respond "Not Found" 404
 }

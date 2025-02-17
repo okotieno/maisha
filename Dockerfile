@@ -15,7 +15,7 @@ RUN pnpm build
 FROM caddy:alpine
 
 # Copy built files from correct output directory
-COPY --from=builder /app/dist/apps/furaha /srv/dist
+COPY --from=builder /app/dist/apps/furaha /usr/share/caddy
 
 # Use simplified Caddyfile configuration
 COPY --from=builder /app/apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
