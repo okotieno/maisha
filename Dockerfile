@@ -28,10 +28,10 @@ FROM caddy:2.7.4
 WORKDIR /srv
 
 # Copy built application from builder
-COPY --from=builder /apps/furaha/dist ./dist
+COPY --from=builder /app/dist/apps/furaha ./dist
 
 # Copy the Caddyfile
-COPY apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
+COPY /app/apps/furaha/caddy/Caddyfile /etc/caddy/Caddyfile
 
 # Expose ports for HTTP and HTTPS
 EXPOSE 80 443
