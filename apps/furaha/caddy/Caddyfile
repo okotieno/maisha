@@ -6,8 +6,4 @@ healthymaisha.com, www.healthymaisha.com {
         file /srv/index.html
     }
     rewrite @notFound /index.html
-
-    tls {
-        certificates /etc/ssl/certs/fullchain.pem /etc/ssl/certs/privkey.pem
-    }
 }
