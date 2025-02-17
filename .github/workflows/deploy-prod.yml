@@ -46,8 +46,8 @@ jobs:
             docker stop maishaweb || true
             docker rm maishaweb || true
             docker run -d --name maishaweb \
-            -p 80:80 \
-            -p 443:443 \
+            -p 8001:80 \
+            -p 8443:443 \
             -e NX_ENVIRONMENT=${{ env.NX_ENVIRONMENT }} \
             -e NX_BASE_HREF=${{ env.NX_BASE_HREF }} \
             ghcr.io/${{ github.repository_owner }}/maishaweb:latest
